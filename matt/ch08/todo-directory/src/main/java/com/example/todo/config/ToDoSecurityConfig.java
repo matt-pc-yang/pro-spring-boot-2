@@ -90,9 +90,10 @@ public class ToDoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().sameOrigin();					// allow use of frame to same origin urls
 	}
 
+	// https://blog.marcosbarbero.com/password-encoder-migration-spring-security-5/
 	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+	public PasswordEncoder passwordEncoder() {
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 
 }
